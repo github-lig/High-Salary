@@ -1,1 +1,1 @@
-<a href = "/github-lig/High-Salary/knowledge/java/简述.md">Java相关</a>
+<a href = "/knowledge/java/简述.md">Java相关</a>
