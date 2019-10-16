@@ -52,7 +52,16 @@
 	初始化值:MyRunnable{id=2:1672896916}
 	递增:MyRunnable{id=2:1672896917}
 
-由此，我们可以看到同一个ThreadLocal变量被不同的线程使用时，初始化值不同，并且在修改的时候互不影响。  
+由此，我们可以看到同一个ThreadLocal变量被不同的线程使用时，初始化值不同，并且在修改的时候互不影响。    
 
 ---
+下面是对ThreadLocal的解析
+
+> java.lang.ThreadLocal
+
+	
+	public class ThreadLocal<T>
+	public void set(T value)
+	public T get()
+首先我们看到ThreadLocal类是一个泛型类，从set和get方法可以看出，ThreadLocal线程本地变量实际存储的是我们在实例化的时候指定的泛型，故我们可以通过ThreadLocal存储任意类型的变量。  
 
