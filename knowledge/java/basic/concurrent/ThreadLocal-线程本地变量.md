@@ -166,7 +166,7 @@ ThreadLocalMap是ThreadLocal的一个静态内部类
 
 ---
 ThreadLocal的使用需要注意以下几点：  
-- ThreadLocal变量类似于全局变量，它会降低代码的可重用性，并在类之间引入隐含的耦合性。
-- 线程复用的话会产生脏数据。由于线程池会复用Thread对象，那么与Thread绑定的静态ThreadLocal变量也会被复用。
+- ThreadLocal变量类似于全局变量，它会降低代码的可重用性，并在类之间引入隐含的耦合性。  
+- 线程复用的话会产生脏数据。由于线程池会复用Thread对象，那么与Thread绑定的静态ThreadLocal变量也会被复用。  
 - 容易产生线程泄露的问题。每次使用完之后尽量通过remove()方法进行删除。
 	
