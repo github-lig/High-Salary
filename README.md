@@ -1,1 +1,1 @@
-<a href = "/knowledge/java/简述.md">Java相关</a>   
+###[Java相关](knowledge/java/简述.md)
