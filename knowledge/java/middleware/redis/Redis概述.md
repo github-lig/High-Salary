@@ -5,15 +5,16 @@
 而分布式缓存指的是与应用分离的缓存组件和服务。优点在于是一个独立的应用，可以被多个应用下共享。比如常用的Redis和MemCache。  
 
 ##### Redis的存储结构
-列表展示，以列表的形式添加拓展链接
 
-* String
-* List
-* Set
-* SortedSet
-* Hash
-* HyperLogLog
-* Geo
+存储结构 | 描述 | 常用操作 | 底层实现
+:-|
+String|简单的key-value结构|常用操作 | 底层实现
+List  |列表，注意是链表而不是数组（类比LinkedList）|常用操作 | 底层实现
+Set   |集合，去重的列表（类比HashSet）|常用操作 | 底层实现
+SortedSet|zSet，有序集合|常用操作 | 底层实现
+Hash  |字典，类比HashMap|常用操作 | 底层实现
+HyperLogLog|可对大数据进行去重，有一定的误差率|暂无 | 暂无
+Geo|地理位置的存储结构，支持GEOHASH|暂无 | 暂无
 
 ##### 内存压缩
 
