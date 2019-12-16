@@ -11,7 +11,7 @@
 String|简单的key-value结构|[使用说明](使用说明/使用说明-String.md) | 底层实现
 List  |列表，注意是链表而不是数组（类比LinkedList）|[使用说明](使用说明/使用说明-List.md) | 底层实现
 Set   |集合，去重的列表（类比HashSet）|[使用说明](使用说明/使用说明-Set.md) | 底层实现
-SortedSet|zSet，有序集合|[使用说明](使用说明/使用说明-zSet.md) | 底层实现
+zSet  |有序集合|[使用说明](使用说明/使用说明-zSet.md) | 底层实现
 Hash  |字典，类比HashMap|[使用说明](使用说明/使用说明-Hash.md) | 底层实现
 HyperLogLog|可对大数据进行去重，有一定的误差率|暂无 | 暂无
 Geo|地理位置的存储结构，支持GEOHASH|暂无 | 暂无
