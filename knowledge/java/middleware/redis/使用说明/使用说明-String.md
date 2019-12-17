@@ -3,8 +3,12 @@
 
 String类型是Redis最常用的数据结构。其可以用来存储简单的字符串，也可以存储对象的Json串，如果value是一个整数，还可以使用自增操作实现简单的计数器功能。
 
+## set-设置指定key的值
+- set key value [expiration EX seconds|PX milliseconds] [NX|XX]。EX代表时间单位为秒，PX为毫秒。NX代表不存在时set，XX代表存在时set。
+- 1
 
-set-设置指定key的值
+
+
 
 
 
