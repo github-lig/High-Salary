@@ -20,6 +20,7 @@ psetex key mulliseconds value
     jedis.setex("name", 10, "setex"); //设置name值为setex，且有效期为10s
     jedis.psetex("name", 500L, "psetex"); //设置name值为psetex，且有效期为500毫秒
 
+
 	/** 无返回值 */
 	//绑定key值。name相当于redisTemplate.opsForValue(key)
     BoundValueOperations<String, Object> name = redisTemplate.boundValueOps("name");
@@ -40,11 +41,34 @@ psetex key mulliseconds value
 ## get-获取指定key的值
 get key。获取指定key的字符串值，如果key不存在，返回null
 	
-	jedis.get("name"); //返回key为name的值
+	jedis.get("name"); //返回与键name相关联的字符串值。
     jedis.get("empty-name"); //返回null
 	jedis.get("lname"); //获取key的值是非字符串的话，报JedisDataException: WRONGTYPE Operation against a key holding the wrong kind of value
 	
 
+	redisTemplate.opsForValue().get("name"); //返回与键name相关联的字符串值。
+	
+## getset-将key的值设置为value，并返回被设置之前的值。如果设置之前key不存在，则返回null
+getset key value
+	
+	jedis.getSet("name", "getset"); 
+	
+
+	redisTemplate.opsForValue().getAndSet("name", "getAndSet");
+
+## strlen-返回键key存储的字符串值的长度
+strlen key
+	
+	jedis.strlen("name"); 
+	
+	
+	redisTemplate.opsForValue().size("name");
+
+
+
+
+
+	
 ## setbit-bitmap位图
 
 
