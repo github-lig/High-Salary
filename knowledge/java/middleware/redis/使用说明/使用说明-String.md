@@ -8,12 +8,13 @@ string在redis中的内部实现是字符数组。内部结构可以类比于jav
 ## set-设置指定key的值
 set key value [expiration EX seconds|PX milliseconds] [NX|XX]。EX代表时间单位为秒，PX为毫秒。NX代表不存在时set，XX代表存在时set。  
 	
+	/** 设置成功返回OK，失败返回null */
 	//String set(String key, String value)
     jedis.set("name", "coding life"); //设置name值为coding life
     //String set(String key, String value, SetParams params)
     jedis.set("name", "coding", new SetParams().ex(60).xx()); //当name值存在时，设置name的值为coding，有效期为60s
 
-
+	
 
 
 
