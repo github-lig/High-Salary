@@ -38,8 +38,8 @@ psetex key mulliseconds value
     name.setIfPresent("cli", 1000L, TimeUnit.SECONDS); //name存在时，设置name值为cli且缓存时间为1000s
     name.setIfPresent("cli", Duration.ofSeconds(100L)); //name存在时，设置name值为cli且缓存时间为100s	
 
-## get-获取指定key的值
-get key。获取指定key的字符串值，如果key不存在，返回null
+## get-获取指定key的字符串值，如果key不存在，返回null
+get key
 	
 	jedis.get("name"); //返回与键name相关联的字符串值。
     jedis.get("empty-name"); //返回null
@@ -64,8 +64,10 @@ strlen key
 	
 	redisTemplate.opsForValue().size("name");
 
-
-
+## append-键存在并且它的值是字符串，将value值追加到现有值的末尾。如果不存在，相当于set
+append key value
+	
+	
 
 
 	
