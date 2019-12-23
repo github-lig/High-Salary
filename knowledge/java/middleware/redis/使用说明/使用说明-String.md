@@ -114,8 +114,18 @@ getrange通过保证子字符串的范围不超过实际字符串的值域来处
 ## 	incr key-为键key所储存的数字值加一。返回增加后的值
 如果key不存在，会先将值初始化为0，然后再执行incr命令  
 如果key存储的值不是个数字，会报错  
-	
-	
+本操作的值限制在64位（bit）(long)有符号数字表示之内	
+
+	127.0.0.1:9527> set notint not
+	OK
+	127.0.0.1:9527> inct notint
+	(error) ERR unknown command `inct`, with args beginning with: `notint`,
+
+
+	jedis.incr("name");
+
+
+	redisTemplate.opsForValue().increment("name");
 
 
 ## setbit-bitmap位图
