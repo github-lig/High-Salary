@@ -127,6 +127,22 @@ getrange通过保证子字符串的范围不超过实际字符串的值域来处
 
 	redisTemplate.opsForValue().increment("name");
 
+## incrby key increment-为键key所储存的数字值加上增量increment
+如果key不存在，会先将值初始化为0，然后再执行incr命令  
+如果key存储的值不是个数字，会报错  
+本操作的值限制在64位（bit）(long)有符号数字表示之内
+	
+	127.0.0.1:9527> exists name
+	(integer) 0
+	127.0.0.1:9527> incrby name 3
+	(integer) 3
+	
+	
+	jedis.incrBy("name", 3L);
+
+
+	
+
 
 ## setbit-bitmap位图
 
