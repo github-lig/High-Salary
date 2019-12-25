@@ -128,7 +128,7 @@ getrange通过保证子字符串的范围不超过实际字符串的值域来处
 	redisTemplate.opsForValue().increment("name");
 
 ## incrby key increment-为键key所储存的数字值加上增量increment
-如果key不存在，会先将值初始化为0，然后再执行incr命令  
+如果key不存在，会先将值初始化为0，然后再执行incrby命令  
 如果key存储的值不是个数字，会报错  
 本操作的值限制在64位（bit）(long)有符号数字表示之内
 	
@@ -141,10 +141,82 @@ getrange通过保证子字符串的范围不超过实际字符串的值域来处
 	jedis.incrBy("name", 3L);
 
 
+	redisTemplate.opsForValue().increment("name", 3L);
+
+## incrbyfloat key increment-为键key储存的值加上浮点数增量increment
+INCRBYFLOAT 命令的计算结果最多只保留小数点的后十七位。
+键 key 当前的值或者给定的增量 increment 不能被解释(parse)为双精度浮点数会返回一个错误
+	
+	127.0.0.1:9527> exists name
+	(integer) 0
+	127.0.0.1:9527> incrbyfloat name a
+	(error) ERR value is not a valid float
+	127.0.0.1:9527> incrbyfloat name 1.2
+	"1.2"
+	127.0.0.1:9527> incrbyfloat name 1.8
+	"3"
+	127.0.0.1:9527> incrbyfloat name 3e5
+	"300003"
 	
 
+	jedis.incrByFloat("name", 3.3);
 
-## setbit-bitmap位图
+
+	redisTemplate.opsForValue().increment("name", 3.3); //redisTemplate.increment(K key, Double delta)
+
+## decr key-为键key储存的数字值减去一。返回减去后的值
+
+	jedis.decr("name");
+	
+	
+	redisTemplate.opsForValue().decrement("name"); //redisTemplate.decr(K key)
+
+## dectby key decrement-为键key储存的数字值减去decrement
+	
+	jedis.decrBy("name", 3L); //Jedis.decrBy(String key, long decrement)
+	
+
+	redisTemplate.opsForValue().decrement("name", 3); //redisTemplate.decr(K key, long delta)
+
+## mset key value [key value ...]-同时为多个键设置值
+mset是一个原子性操作
+
+	mset name Nike age 26 sex nan
+	
+	
+	jedis.mset("name", "Nike", "age", "26", "sex", "nan"); //jedis.mset(String ... keysvalues)
+
+
+	
+	Map<String, Object> map = new HashMap<>();
+    map.put("name", "Nike");
+    map.put("age", 26);
+    map.put("sex", "nan");
+    redisTemplate.opsForValue().multiSet(map); //redisTemplate.multiSet(Map<? extends K, ? extends V> m)
+
+## msetnx key value [key value ...]-当且仅当所有给定键都不存在时，为所有给定键设置值
+	
+	127.0.0.1:9527> set name nike
+	OK
+	127.0.0.1:9527> msetnx name n age 26
+	(integer) 0
+	
+	
+	jedis.msetnx("name", "Nike", "age", "26", "sex", "nan");
+
+	
+	redisTemplate.opsForValue().multiSetIfAbsent(map); //redisTemplate.multiSetIfAbsent(Map<? extends K, ? extends V> m)
+
+## mget key [key ...]-获取多个键储存的值,返回value值的列表
+如果给定的字符串键里面，有某个键不存在，那么这个键的值将以特殊值 nil 表示。
+
+	mget name age sex
+	
+	
+	jedis.mget("name", "age", "sex");
+
+	
+	redisTemplate.opsForValue().multiGet(Arrays.asList("name", "age", "sex")); //redisTemplate.multiGet(Collection<K> keys)
 
 
 
