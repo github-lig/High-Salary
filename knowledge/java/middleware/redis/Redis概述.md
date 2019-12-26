@@ -23,6 +23,8 @@ geo|地理位置的存储结构，支持GEOHASH|暂无
 ##### 数据失效与淘汰
 ##### Redis数据持久化
 ##### Redis对分布式的支持
+* [Jedis分布式锁实现](分布式锁-Jedis版.md)
+* [StringRedisTemplate分布式锁实现](分布式锁-StringRedisTemplate版.md)
 ##### 使用的注意点
 ##### 典型用例
 ##### 缓存更新方案分析
