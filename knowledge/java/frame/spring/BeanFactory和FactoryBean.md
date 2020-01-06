@@ -17,3 +17,8 @@ BeanFactory - 接口，为ioc容器的实现提供了规范。更多的是使用
 ## FactoryBean
 FactoryBean也是一种SpringBean，它与普通的Bean不同，是用来生成或修饰对象生成的工厂Bean。其返回的Bean不是对象的实例，而是其getObject方法返回的对象，是否单例是由isSingleton方法的返回值决定。  
 其生成的Bean也是由BeanFactory管理的。  
+
+---
+BeanFactory相关知识点较多，会另开一篇。本篇只是讲述FactoryBean的使用。  
+
+
