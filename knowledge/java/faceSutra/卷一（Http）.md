@@ -1,4 +1,4 @@
-网络-ip-通信-网络基础-tcp/ip-各层架构协议-tcp和udp-http-rest  SpringMVC系列 拦截器 过滤器 全局异常  
+网络-ip-通信-网络基础-tcp/ip-各层架构协议-tcp和udp-http-rest  
 
 -- 
 - 网络是几乎可以实时发送和接收数据的计算机和其他设备的集合。我们现在用的微信，抖音等软件，数据都是通过网络进行传播。   
@@ -32,16 +32,39 @@
 	- 客户端向服务器发送消息，请求指定路径上的资源。这个请求包括一个首部，可选地（取决于请求的性质）还可以有一个空行，后面是这个请求的数据。
 	- 服务器向客户端发送响应。响应以响应码开头，后面是包含元数据的首部、一个空行以及所请求的文档或错误消息。
 	- 服务器关闭连接（取决于Connection属性）
-- 1
-- 2
-- 3
-- 4
-- 5
-- 6
-- 7
-- 8
-- 9
-- 10
+- Http响应码：
+	- 1XX：信息。 100 Continue
+	- 2XX：SuccessFul 请求成功。200 OK
+	- 3XX: Redirection 重定位及重定向。
+	- 4XX：客户端错误。
+		- 400 Bad Request：客户端向服务器发出的请求使用了不正确的语法。
+		- 401 Unauthorized：访问这个页面需要身份认证。
+		- 404 Not Found：服务器找不到所请求的资源
+		- 405 Method Not Allowed：请求方法不支持指定的资源。例如，视图在不支持PUT的WEB服务器上使用PUT放置文件
+		- 408 Request Timeout：客户端用了太长时间发送请求，可能是因为网络拥塞的原因。
+	- 5XX：服务器错误
+		- 500 Internal Server Error：发生了意外情况，服务器不知道如何处理
+		- 502 Bad Gateway：只用于作为代理或网关的服务器。它标识该代理在试图完成请求时，从它连接的服务器接收到一个无效的响应。
+		- 504 Gateway Timeout：代理服务器在合理的时间内未能接收到上游服务器的响应。
+- Http方法：
+	- GET（VISIT）：访问服务器资源
+	- POST（CREATE）：提交服务器资源，用来创建新的资源
+	- PUT（UPDATE）：修改服务器已经存在的资源，使用PUT时需要把资源的所有属性一并提交
+	- PATCH（UPDATE）：修改服务器已经存在的资源，使用PATCH时只需要将部分资源属性提交
+	- DELETE（DELETE）：从服务器删除资源
+	- HEAD、CONNECT、OPTIONS、TRACE
+- Http请求主体：
+	- 一个起始行，包括方法。路径和查询字符串，以及HTTP版本
+	- 一个HTTP首部
+	- 一个空行（两个连续的回车/换行对）
+	- 主体
+- Cookie：很多网站使用一些小文本在连接之间存储持久的客户端状态，这些小文本串称为cookie。cookie在请求和响应的HTTP首部，从 服务器传递到客户端，再从客户端传回服务器。
+	- 默认情况下，cookie来自哪个服务器就应用于哪个服务器。不过网站也可以指定一个cookie应用于整个子域，而不只是最初的服务器。例如，下面这个请求为整个foo.example.com域设置一个用户cookie： Set-Cookie:user=elharo;Domain=.foo.example.com。浏览器不只是把这个cookie会送到www.foo.example.com，还会发送给lothar.foo.example.com，eliza.foo.example.com域中的任何其他主机。
+	- Java提供了CookieManager（cookie管理，启用、接收策略）和CookieStore（本地存放和获取cookie）
+- Session：由于Http是无状态的，当服务器需要记录用户的状态时（比如购物车，记录用户权限，登录状态），就需要用某种机制来标识具体的用户，这个机制就是Session。在一次会话中，解决两次http请求的关联，使两次请求可以在服务端找到同一个Session信息，被认为是同一个用户。
+	- 服务端如何识别特定的客户：每次Http请求的时候，客户端都会发送相应的Cookie信息到服务端，比如Session_id。如果浏览器禁用了Cookie，会使用URL重写的技术，在URL后面附加一个诸如sid=xxx的参数，服务器据此来识别用户。
+- Session和Cookie：Session在服务端（可以存储在内存、数据库、文件），Cookie在客户端浏览器（浏览器内存）
+- rest：Rest是一种风格，在Rest风格中，每一个资源都只是对应着一个网址，而一个代表资源的网址应该是一个名词，不应该存在动词，这代表对一个资源的操作。
 
 
 
