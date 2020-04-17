@@ -22,7 +22,7 @@
 10. 查询学过「张三」老师授课的同学的信息
 	`select DISTINCT s.* from sc sc join (select c.CId from teacher t join course c ON t.TId = c.TId AND t.Tname = '张三') as tc ON sc.CId = tc.CId JOIN student s ON s.SId = sc.SId`
 11. 查询没有学全所有课程的同学的信息
-
+	`select s.* from student s INNER JOIN (select sc.SId, COUNT(1) AS c from sc sc GROUP BY sc.SId HAVING c = (SELECT count(1) FROM course)) AS t ON s.SId = t.SId`
 12. 查询至少有一门课与学号为" 01 "的同学所学相同的同学的信息
 
 13. 查询和" 01 "号的同学学习的课程 完全相同的其他同学的信息
