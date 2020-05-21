@@ -2,6 +2,9 @@
 	
 	1.
 	void createObject(Long size) {
+		if (老年代剩余空间 > 新生代所有对象大小) {
+			进行 monor gc;		
+		}
 		//判断是否是大对象
 		if (大对象 && 老年代剩余空间找不到足够大的连续空间分配该大对象) {
 			进行full gc;
